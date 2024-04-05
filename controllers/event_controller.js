@@ -1,47 +1,46 @@
-const bands = require('express').Router()
+const event = require('express').Router()
 const db = require('../models')
-const { Band } = db
+const { Event } = db
 const { Op } = require('sequelize')
 
-module.exports = bands
+module.exports = event
 
-// FIND ALL BANDS
-// FIND ALL BANDS
-bands.get('/', async (req, res) => {
+// FIND ALL event
+event.get('/', async (req, res) => {
     try {
-        const foundBands = await Band.findAll({
-            order: [ [ 'available_start_time', 'ASC' ] ],
+        const foundEvents = await Event.findAll({
+            order: [ [ 'start_time', 'ASC' ] ],
             where: {
                 name: { [Op.like]: `%${req.query.name ? req.query.name : ''}%` }
             }
         })
-        res.status(200).json(foundBands)
+        res.status(200).json(foundEvents)
     } catch (error) {
         res.status(500).json(error)
     }
 })
 
 
-// FIND A SPECIFIC BAND
-bands.get('/:id', async (req, res) => {
+// FIND A SPECIFIC Event
+event.get('/:id', async (req, res) => {
     try {
-        const foundBand = await Band.findOne({
-            where: { band_id: req.params.id }
+        const foundEvent = await Event.findOne({
+            where: { event_id: req.params.id }
         })
-        res.status(200).json(foundBand)
+        res.status(200).json(foundEvent)
     } catch (error) {
         res.status(500).json(error)
     }
 })
 
 
-// CREATE A BAND
-bands.post('/', async (req, res) => {
+// CREATE A Event
+event.post('/', async (req, res) => {
     try {
-        const newBand = await Band.create(req.body)
+        const newEvent = await Event.create(req.body)
         res.status(200).json({
-            message: 'Successfully inserted a new band',
-            data: newBand
+            message: 'Successfully inserted a new Event',
+            data: newEvent
         })
     } catch(err) {
         res.status(500).json(err)
