@@ -11,7 +11,7 @@ stages.get('/', async (req, res) => {
         const foundStages = await Stage.findAll({
             order: [ [ 'stage_name', 'ASC' ] ],
             where: {
-                name: { [Op.like]: `%${req.query.name ? req.query.name : ''}%` }
+                stage_name: { [Op.like]: `%${req.query.name ? req.query.name : ''}%` }
             }
         })
         res.status(200).json(foundStages)
