@@ -46,3 +46,17 @@ stages.post('/', async (req, res) => {
         res.status(500).json(err)
     }
 })
+
+stages.delete = async (req, res) => {
+    try {
+        const deletedStage = await Stage.destroy({
+            where: { stage_id: req.params.id }
+        })
+        res.status(200).json({
+            message: 'Successfully deleted a stage' + req.params.id,
+            data: deletedStage
+        })
+    } catch(err) {
+        res.status(500).json(err)
+    }
+}

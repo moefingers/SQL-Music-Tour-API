@@ -46,3 +46,17 @@ events.post('/', async (req, res) => {
         res.status(500).json(err)
     }
 })
+
+events.delete = async (req, res) => {
+    try {
+        const deletedEvent = await Event.destroy({
+            where: { event_id: req.params.id }
+        })
+        res.status(200).json({
+            message: 'Successfully deleted a Event' + req.params.id,
+            data: deletedEvent
+        })
+    } catch(err) {
+        res.status(500).json(err)
+    }
+}
