@@ -3,32 +3,25 @@
 module.exports = {
   async up(queryInterface, Sequelize) {
     await queryInterface.createTable('meet_greets', {
-      id: {
+      meet_greet_id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
       event_id: {
+        allowNull: false,
         type: Sequelize.SMALLINT
       },
       band_id: {
+        allowNull: false,
         type: Sequelize.SMALLINT
       },
       meet_start_time: {
-        type: Sequelize.DATE
-      },
-      meet_end_time: {
-        type: Sequelize.DATE
-      },
-      meet_greet_id: {
-        type: Sequelize.INTEGER
-      },
-      createdAt: {
         allowNull: false,
         type: Sequelize.DATE
       },
-      updatedAt: {
+      meet_end_time: {
         allowNull: false,
         type: Sequelize.DATE
       }
