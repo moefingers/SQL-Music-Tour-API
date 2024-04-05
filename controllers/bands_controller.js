@@ -6,7 +6,6 @@ const { Op } = require('sequelize')
 module.exports = bands
 
 // FIND ALL BANDS
-// FIND ALL BANDS
 bands.get('/', async (req, res) => {
     try {
         const foundBands = await Band.findAll({

@@ -1,21 +1,20 @@
-const bands = require('express').Router()
+const stages = require('express').Router()
 const db = require('../models')
-const { Band } = db
+const { Stage } = db
 const { Op } = require('sequelize')
 
-module.exports = bands
+module.exports = stages
 
-// FIND ALL BANDS
-// FIND ALL BANDS
-bands.get('/', async (req, res) => {
+// FIND ALL stages
+stages.get('/', async (req, res) => {
     try {
-        const foundBands = await Band.findAll({
-            order: [ [ 'available_start_time', 'ASC' ] ],
+        const foundStages = await Stage.findAll({
+            order: [ [ 'stage_name', 'ASC' ] ],
             where: {
                 name: { [Op.like]: `%${req.query.name ? req.query.name : ''}%` }
             }
         })
-        res.status(200).json(foundBands)
+        res.status(200).json(foundStages)
     } catch (error) {
         res.status(500).json(error)
     }
@@ -23,12 +22,12 @@ bands.get('/', async (req, res) => {
 
 
 // FIND A SPECIFIC BAND
-bands.get('/:id', async (req, res) => {
+stages.get('/:id', async (req, res) => {
     try {
-        const foundBand = await Band.findOne({
-            where: { band_id: req.params.id }
+        const foundStage = await Stage.findOne({
+            where: { stage_id: req.params.id }
         })
-        res.status(200).json(foundBand)
+        res.status(200).json(foundStage)
     } catch (error) {
         res.status(500).json(error)
     }
@@ -36,12 +35,12 @@ bands.get('/:id', async (req, res) => {
 
 
 // CREATE A BAND
-bands.post('/', async (req, res) => {
+stages.post('/', async (req, res) => {
     try {
-        const newBand = await Band.create(req.body)
+        const newStage = await Stage.create(req.body)
         res.status(200).json({
-            message: 'Successfully inserted a new band',
-            data: newBand
+            message: 'Successfully inserted a new stage',
+            data: newStage
         })
     } catch(err) {
         res.status(500).json(err)

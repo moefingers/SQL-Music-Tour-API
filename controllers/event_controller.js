@@ -1,12 +1,12 @@
-const event = require('express').Router()
+const events = require('express').Router()
 const db = require('../models')
 const { Event } = db
 const { Op } = require('sequelize')
 
-module.exports = event
+module.exports = events
 
-// FIND ALL event
-event.get('/', async (req, res) => {
+// FIND ALL events
+events.get('/', async (req, res) => {
     try {
         const foundEvents = await Event.findAll({
             order: [ [ 'start_time', 'ASC' ] ],
@@ -22,7 +22,7 @@ event.get('/', async (req, res) => {
 
 
 // FIND A SPECIFIC Event
-event.get('/:id', async (req, res) => {
+events.get('/:id', async (req, res) => {
     try {
         const foundEvent = await Event.findOne({
             where: { event_id: req.params.id }
@@ -35,7 +35,7 @@ event.get('/:id', async (req, res) => {
 
 
 // CREATE A Event
-event.post('/', async (req, res) => {
+events.post('/', async (req, res) => {
     try {
         const newEvent = await Event.create(req.body)
         res.status(200).json({
