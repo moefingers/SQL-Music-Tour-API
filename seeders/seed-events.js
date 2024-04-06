@@ -11,14 +11,14 @@ module.exports = {
       [
         {
           event_id: 1,
-          name: "Event 1",
+          name: "Jinglefest",
           date: new Date(),
           start_time: new Date(),
           end_time: new Date(),
         },
         {
           event_id: 2,
-          name: "Event 2",
+          name: "Jingledongle",
           date: new Date(),
           start_time: new Date(),
           end_time: new Date(),
@@ -39,7 +39,7 @@ module.exports = {
         },
         {
           event_id: 8,
-          name: "Event 8",
+          name: "Dingledays",
           date: new Date(),
           start_time: new Date(),
           end_time: new Date(),

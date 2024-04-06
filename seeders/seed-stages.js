@@ -27,7 +27,7 @@ module.exports = {
       return queryInterface.bulkDelete(
         'stages',
         {
-          stages: [80,90]
+          stage_id: [80,90]
         },
        {})
     

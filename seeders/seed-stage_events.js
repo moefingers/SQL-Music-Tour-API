@@ -10,14 +10,24 @@ module.exports = {
       "stage_events",
       [
         {
-          stage_events_id: 81,
+          stage_events_id: 1,
           stage_id: 80,
           event_id: 1
         },
         {
-          stage_events_id: 97,
+          stage_events_id: 2,
           stage_id: 90,
-          event_id: 7
+          event_id: 2
+        },
+        {
+          stage_events_id: 3,
+          stage_id: 90,
+          event_id: 2
+        },
+        {
+          stage_events_id: 4,
+          stage_id: 90,
+          event_id: 8
         }
       ],
       {}
@@ -29,7 +39,7 @@ module.exports = {
       return queryInterface.bulkDelete(
         'stage_events',
         {
-          stage_events_id: [81,97]
+          stage_events_id: [1,2,3,4]
         },
        {})
     

@@ -18,20 +18,20 @@ module.exports = {
         },
         {
           meet_greet_id: 2,
-          event_id: 2,
+          event_id: 1,
           band_id: 69,
           meet_start_time: new Date(),
           meet_end_time: new Date(),
         },
         {
           meet_greet_id: 3,
-          event_id: 3,
+          event_id: 2,
           band_id: 69,
           meet_start_time: new Date(),
           meet_end_time: new Date(),
         },{
           meet_greet_id: 4,
-          event_id: 7,
+          event_id: 2,
           band_id: 420,
           meet_start_time: new Date(),
           meet_end_time: new Date(),
@@ -45,7 +45,7 @@ module.exports = {
         },
         {
           meet_greet_id: 6,
-          event_id: 9,
+          event_id: 8,
           band_id: 420,
           meet_start_time: new Date(),
           meet_end_time: new Date(),
