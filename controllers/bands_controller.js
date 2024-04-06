@@ -32,6 +32,20 @@ bands.get('/:id', async (req, res) => {
         res.status(500).json(error)
     }
 })
+// UPDATE A BAND
+bands.put('/:id', async (req, res) => {
+    try {
+        const updatedBand = await Band.update(req.body, {
+            where: { band_id: req.params.id }
+        })
+        res.status(200).json({
+            message: 'Successfully updated a band' + req.params.id,
+            data: updatedBand
+        })
+    } catch(err) {
+        res.status(500).json(err)
+    }
+})
 
 
 // CREATE A BAND

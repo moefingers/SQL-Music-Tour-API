@@ -47,6 +47,23 @@ events.post('/', async (req, res) => {
     }
 })
 
+// UPDATE A Event
+events.put('/:id', async (req, res) => {
+    try {
+        const updatedEvent = await Event.update(req.body, {
+            where: { event_id: req.params.id }
+        })
+        res.status(200).json({
+            message: 'Successfully updated a Event' + req.params.id,
+            data: updatedEvent
+        })
+    } catch(err) {
+        res.status(500).json(err)
+    }
+})
+
+
+// DELETE A Event
 events.delete = async (req, res) => {
     try {
         const deletedEvent = await Event.destroy({
