@@ -54,7 +54,7 @@ events.put('/:id', async (req, res) => {
             where: { event_id: req.params.id }
         })
         res.status(200).json({
-            message: 'Successfully updated a Event' + req.params.id,
+            message: 'Successfully updated a Event with ID:' + req.params.id,
             data: updatedEvent
         })
     } catch(err) {

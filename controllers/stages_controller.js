@@ -53,7 +53,7 @@ stages.put('/:id', async (req, res) => {
             where: { stage_id: req.params.id }
         })
         res.status(200).json({
-            message: 'Successfully updated a stage' + req.params.id,
+            message: 'Successfully updated a stage with ID:' + req.params.id,
             data: updatedStage
         })
     } catch(err) {

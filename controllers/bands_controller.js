@@ -39,7 +39,7 @@ bands.put('/:id', async (req, res) => {
             where: { band_id: req.params.id }
         })
         res.status(200).json({
-            message: 'Successfully updated a band' + req.params.id,
+            message: 'Successfully updated a band with ID:' + req.params.id,
             data: updatedBand
         })
     } catch(err) {
@@ -67,7 +67,7 @@ bands.delete('/:id', async (req, res) => {
             where: { band_id: req.params.id }
         })
         res.status(200).json({
-            message: 'Successfully deleted a band' + req.params.id,
+            message: 'Successfully deleted a band with ID:' + req.params.id,
             data: deletedBand
         })
     } catch(err) {
