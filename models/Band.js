@@ -2,19 +2,24 @@
 const { Model } = require("sequelize");
 module.exports = (sequelize, DataTypes) => {
   class Band extends Model {
-    /**
-     * Helper method for defining associations.
-     * This method is not a part of Sequelize lifecycle.
-     * The `models/index` file will call this method automatically.
-     */
-    static associate(models) {
-      // define association here
+    static associate({ MeetGreet, SetTime }) {
+      //  A Band can have many MeetGreets
+      Band.hasMany(MeetGreet, {
+        foreignKey: "band_id",
+        as: "meet_greets",
+      });
+
+      // A Band can have many SetTimes
+      Band.hasMany(SetTime, {
+        foreignKey: "band_id",
+        as: "set_times",
+      });
     }
   }
   Band.init(
     {
       band_id: {
-        type: DataTypes.INTEGER,
+        type: DataTypes.SMALLINT,
         primaryKey: true,
         autoIncrement: true,
       },

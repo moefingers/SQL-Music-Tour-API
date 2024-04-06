@@ -2,22 +2,22 @@
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable('events', {
-      event_id: {
-        allowNull: false,
+    await queryInterface.createTable('bands', {
+      band_id: {
         autoIncrement: true,
         primaryKey: true,
-        type: Sequelize.INTEGER
+        type: Sequelize.SMALLINT,
+        allowNull: false
       },
       name: {
         allowNull: false,
         type: Sequelize.STRING
       },
-      date: {
+      genre: {
         allowNull: false,
-        type: Sequelize.DATE
+        type: Sequelize.TEXT
       },
-      start_time: {
+      available_start_time: {
         allowNull: false,
         type: Sequelize.DATE
       },
@@ -28,6 +28,6 @@ module.exports = {
     });
   },
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable('events');
+    await queryInterface.dropTable('bands');
   }
 };
