@@ -1,10 +1,8 @@
+// DEPENDENCIES
 const bands = require('express').Router()
 const db = require('../models')
-const { Band, MeetGreet, Event, SetTime} = db
+const { Band, MeetGreet, SetTime, Event } = db 
 const { Op } = require('sequelize')
-
-module.exports = bands
-
 
 // FIND ALL BANDS
 bands.get('/', async (req, res) => {
@@ -17,10 +15,9 @@ bands.get('/', async (req, res) => {
         })
         res.status(200).json(foundBands)
     } catch (error) {
-        res.status(500).json(error)
+        res.status(500).json("failed to GET /bands " + error)
     }
 })
-
 
 // FIND A SPECIFIC BAND
 bands.get('/:name', async (req, res) => {
@@ -44,7 +41,7 @@ bands.get('/:name', async (req, res) => {
                     attributes: { exclude: ["band_id", "event_id"] },
                     include: { 
                         model: Event, 
-                        as: "event", 
+                        as: "events", 
                         where: { name: { [Op.like]: `%${req.query.event ? req.query.event : ''}%` } } 
                     }
                 }
@@ -56,24 +53,9 @@ bands.get('/:name', async (req, res) => {
         })
         res.status(200).json(foundBand)
     } catch (error) {
-        res.status(500).json(error)
+        res.status(500).json("failed to GET bands/:name " + error)
     }
 })
-// UPDATE A BAND
-bands.put('/:id', async (req, res) => {
-    try {
-        const updatedBand = await Band.update(req.body, {
-            where: { band_id: req.params.id }
-        })
-        res.status(200).json({
-            message: 'Successfully updated a band with ID:' + req.params.id,
-            data: updatedBand
-        })
-    } catch(err) {
-        res.status(500).json(err)
-    }
-})
-
 
 // CREATE A BAND
 bands.post('/', async (req, res) => {
@@ -83,21 +65,42 @@ bands.post('/', async (req, res) => {
             message: 'Successfully inserted a new band',
             data: newBand
         })
-    } catch(err) {
-        res.status(500).json(err)
+    } catch(error) {
+        res.status(500).json("failed to POST /bands " + error)
     }
 })
 
-bands.delete('/:id', async (req, res) => {
+// UPDATE A BAND
+bands.put('/:id', async (req, res) => {
     try {
-        const deletedBand = await Band.destroy({
-            where: { band_id: req.params.id }
+        const updatedBands = await Band.update(req.body, {
+            where: {
+                band_id: req.params.id
+            }
         })
         res.status(200).json({
-            message: 'Successfully deleted a band with ID:' + req.params.id,
-            data: deletedBand
+            message: `Successfully updated band with id ${req.params.id}`
         })
-    } catch(err) {
-        res.status(500).json(err)
+    } catch(error) {
+        res.status(500).json("failed to PUT /bands/:id " + error)
     }
 })
+
+// DELETE A BAND
+bands.delete('/:id', async (req, res) => {
+    try {
+        const deletedBands = await Band.destroy({
+            where: {
+                band_id: req.params.id
+            }
+        })
+        res.status(200).json({
+            message: `Successfully deleted band with id ${req.params.id}`
+        })
+    } catch(error) {
+        res.status(500).json("failed to DELETE /bands/:id " + error)
+    }
+})
+
+// EXPORT
+module.exports = bands
