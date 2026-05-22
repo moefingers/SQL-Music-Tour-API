@@ -1,8 +1,8 @@
 <!-- unlv-museum-banner-start -->
 <a href="https://unlv-museum.infinite-syndicate.com/music-tour-api" target="_blank" rel="noopener">
   <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="https://unlv-museum.infinite-syndicate.com/github-banners/music-tour-api?theme=dark&v=b240e88eba">
-    <img src="https://unlv-museum.infinite-syndicate.com/github-banners/music-tour-api?theme=light&v=b240e88eba" alt="REST API for managing bands and their tour events — the original UNLV exercise used Express + Sequelize against Postgres; the museum reimplements the same routes in Next.js + Drizzle and surfaces them via /api-client." width="100%">
+    <source media="(prefers-color-scheme: dark)" srcset="https://unlv-museum.infinite-syndicate.com/github-banners/music-tour-api?theme=dark&v=06868d8e46">
+    <img src="https://unlv-museum.infinite-syndicate.com/github-banners/music-tour-api?theme=light&v=06868d8e46" alt="REST API for managing bands and their tour events — the original UNLV exercise used Express + Sequelize against Postgres; the museum reimplements the same routes in Next.js + Drizzle and surfaces them via /api-client." width="100%">
   </picture>
 </a>
 
